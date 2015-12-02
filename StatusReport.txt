@@ -1,0 +1,10 @@
+course: CA4
+exercise: 2
+date: 2015-12-02
+surname: Hosa
+forename: Piotr
+email: 2038565h@student.gla.ac.uk
+
+1. New instruction: loadxi
+
+This instruction is implemented by combining the load and add instructions. Therefore in total there are 4 states. The first three states implement the load part of loadxi and the final state increments the index. Therefore in Control.hs I have added the four new states the first of which is triggered by RX opcode 7. I have also added those states to assert the relevant control signals. Another change to be made, that was not implemented would be to increment the index register. In the current state the program increments the destination register, R5 causing the program to not perform the intended action (R5 is the register where comparison is stored, so since the index is not incremented the program will run forever). The circuit needs another signal that would indicate that the index register is to be incremented in the final state of the loadxi instruction. Below is an example of the instruction in execution, note that 
